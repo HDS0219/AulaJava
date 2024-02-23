@@ -9,7 +9,7 @@ public class Program {
 	
 	public static void main(String[] args) {
 		
-		//aa
+		//aaaaaa
 		Order order = new Order(1080, new Date(), OrderStatus.PEDING_PAYMENT);
 		
 		System.out.println(order);
