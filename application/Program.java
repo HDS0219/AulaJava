@@ -15,12 +15,16 @@ public class Program {
 	
 	public static void main(String[] args) throws ParseException {
 		
+		//Set up the system
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		
+		//Read the department's name
 		System.out.print("Enter department's name: ");
 		String departmentName = sc.nextLine();
+		
+		//Read worker's data
 		System.out.println("Enter orker data: ");
 		System.out.print("Name: ");
 		String workerName = sc.nextLine();
@@ -30,9 +34,11 @@ public class Program {
 		double baseSalary = sc.nextDouble();
 		Worker worker = new Worker(workerName, WorkerLevel.valueOf(workerLevel), baseSalary, new Department(departmentName));
 		
+		//Read number of contracts
 		System.out.print("How many contracts to this worker? ");
 		int n = sc.nextInt();
 		
+		//Read contracts details and add them to worker
 		for(int i=1; i<=n; i++) {
 			
 			System.out.println("Enter contract #" + i + " data:");
@@ -47,17 +53,20 @@ public class Program {
 			
 		}
 		
+		//Read month and year to calculate income
 		System.out.println();
 		System.out.print("Enter month and year to calculate income (MM/YYYY): ");
 		String monthAndYear = sc.next();
 		int month = Integer.parseInt(monthAndYear.substring(0, 2));
 		int year = Integer.parseInt(monthAndYear.substring(3));
+		
+		//Print the results
 		System.out.println("Name: " + worker.getName());
 		System.out.println("Department: " + worker.getDepartment().getName());
 		System.out.println("Income for " + monthAndYear + ": " + String.format("%.2f", worker.income(year, month)));
 		
 		
-		
+		//Close Scanner
 		sc.close();
 	}
 }
